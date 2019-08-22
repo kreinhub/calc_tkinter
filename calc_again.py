@@ -2,7 +2,7 @@ from tkinter import *
 from tkinter import ttk
 
 root = Tk()
-root.title('Calc again')
+root.title('Calculator by KREIN')
 
 
 # calc logic
@@ -12,8 +12,9 @@ def calc(val):
     elif val == '+/-':
         raw_string = str(screen.get())
         signs = "+-*/"
-
-        if raw_string.isdigit():
+        if '=' in raw_string:
+            pass
+        elif raw_string.isdigit():
             result = '-' + raw_string
             screen.delete(0, END)
             screen.insert(0, result)
@@ -42,9 +43,17 @@ def calc(val):
                         screen.insert(0, result)
 
     elif val == '=':
-        screen.insert(END, '=' + str(eval(screen.get())))
+        raw_string = str(screen.get())
+        if '=' in raw_string:
+            pass
+        else:
+            screen.insert(END, '=' + str(eval(screen.get())))
     else:
-        screen.insert(END, val)
+        raw_string = str(screen.get())
+        if "=" in raw_string:
+            pass
+        else:
+            screen.insert(END, val)
 
 
 # draw buttons
